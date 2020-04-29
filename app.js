@@ -3,6 +3,26 @@ window.addEventListener("keydown", moveSomething, false);
 var deltaX = 0;
 var deltaY = 0;
 
+function moveUp() {
+    deltaY -= 2;
+    drawRectangle();
+}
+
+function moveDown() {
+    deltaY += 2;
+    drawRectangle();
+}
+
+function moveRight() {
+    deltaX += 2;
+    drawRectangle();
+}
+
+function moveLeft() {
+    deltaX -= 2;
+    drawRectangle();
+}
+
 function moveSomething(e) {
     switch(e.keyCode) {
         case 37:
