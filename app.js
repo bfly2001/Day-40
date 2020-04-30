@@ -2,6 +2,7 @@ window.addEventListener("keydown", moveSomething, false);
 
 var deltaX = 0;
 var deltaY = 0;
+var angle = 0;
 
 function moveUp() {
     deltaY -= 2;
@@ -27,7 +28,7 @@ function moveSomething(e) {
     switch(e.keyCode) {
         case 37:
             // left key
-            deltaX -= 2;
+            angle -= 2;
             break;
         case 38:
             // up key
@@ -35,7 +36,7 @@ function moveSomething(e) {
             break;
         case 39:
             // right key
-            deltaX += 2;
+            angle += 2;
             break;
         case 40:
             // down key
@@ -54,7 +55,10 @@ ctx.fillStyle = "yellow";
 function drawRectangle() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //ctx.moveTo(200 + deltaX, 100 + deltaY);
-    ctx.fillRect(20 + deltaX, 20 + deltaY, 50, 50);
+    ctx.translate(100, 100);
+    ctx.rotate((angle) * Math.PI / 180);
+    ctx.translate(-100, -100);
+    ctx.fillRect(150 + deltaX, 150 + deltaY, 50, 50);
 }
 
 drawRectangle();
