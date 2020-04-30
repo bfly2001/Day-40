@@ -56,10 +56,10 @@ function drawRectangle() {
     ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //ctx.moveTo(200 + deltaX, 100 + deltaY);
-    ctx.translate(100, 100);
+    ctx.translate(115, 115);
     ctx.rotate((Math.PI / 180) * angle);
-    ctx.translate(-100, -100);
-    ctx.fillRect(150 + deltaX, 150 + deltaY, 50, 50);
+    ctx.translate(-115, -115);
+    ctx.fillRect(120 + deltaX, 120 + deltaY, 50, 50);
     ctx.restore();
 }
 
