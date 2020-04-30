@@ -53,12 +53,14 @@ const ctx = canvas.getContext('2d');
 ctx.fillStyle = "yellow";
 
 function drawRectangle() {
+    ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //ctx.moveTo(200 + deltaX, 100 + deltaY);
     ctx.translate(100, 100);
-    ctx.rotate((angle) * Math.PI / 180);
+    ctx.rotate((Math.PI / 180) * angle);
     ctx.translate(-100, -100);
     ctx.fillRect(150 + deltaX, 150 + deltaY, 50, 50);
+    ctx.restore();
 }
 
 drawRectangle();
