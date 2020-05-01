@@ -9,6 +9,48 @@ body {
 }
 
 #ctrlContainer {
-    display: flex;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: center;
+    margin-top: 3%;
+    justify-content: space-evenly;
+}
+
+button {
+    width: 20em;
+    height: 20em;
+    border-radius: 20%;
+    justify-self: center;
+}
+
+#upbtn {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+}
+
+#downbtn {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 3;
+}
+
+#leftbtn {
+    grid-column-end: 3;
+    grid-row-start: 2;
+}
+
+#rightbtn {
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+.rangeslider {
+    display: grid;
+    justify-content: center;
+}
+
+.myslider {
+    width: 50em;
 }

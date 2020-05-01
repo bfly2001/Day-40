@@ -9,10 +9,13 @@
         Canvas Content Goes Here
     </canvas>
 <div id="ctrlContainer">
-    <button onclick="moveUp()">UP</button>
-    <button onclick="moveDown()">DOWN</button>
-    <button onclick="moveRight()">RIGHT</button>
-    <button onclick="moveLeft()">LEFT</button>
+    <button id="upbtn" onclick="moveUp()">UP</button>
+    <button id="downbtn" onclick="moveDown()">DOWN</button>
+    <button id="leftbtn" onclick="moveLeft()">LEFT</button>
+    <button id="rightbtn" onclick="moveRight()">RIGHT</button>
+</div>
+<div class="rangeslider">
+    <input type="range" min="1" max="100" value="10" class="myslider" id="sliderRange">
 </div>
 <script src="app.js"></script>
 </body>
