@@ -15,12 +15,12 @@ function moveDown() {
 }
 
 function moveRight() {
-    deltaX += 2;
+    angle += 2;
     drawRectangle();
 }
 
 function moveLeft() {
-    deltaX -= 2;
+    angle -= 2;
     drawRectangle();
 }
 
