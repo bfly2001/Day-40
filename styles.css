@@ -18,11 +18,12 @@ body {
 }
 
 button {
-    width: 20em;
-    height: 20em;
+    width: 5em;
+    height: 5em;
     border-radius: 20%;
     justify-self: center;
     background-color: lightpink;
+    font-size: xx-large;
 }
 
 #upbtn {
@@ -48,11 +49,14 @@ button {
 }
 
 .rangeslider {
-    display: grid;
+    display: flex;
     justify-content: center;
+    padding: 20%;
 }
 
 .myslider {
     width: 50em;
-    background-color: peru;
+    background-color: grey;
+    -webkit-appearance: none;
+    color: black;
 }

@@ -3,6 +3,11 @@ window.addEventListener("keydown", moveSomething, false);
 var deltaX = 0;
 var deltaY = 0;
 var angle = 0;
+var canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+//var scaleInput = document.getElementById("sliderRange");
+//var scale = scaleInput.value;
+
 
 function moveUp() {
     deltaY -= 2;
@@ -48,18 +53,16 @@ function moveSomething(e) {
     drawRectangle();
 }
 
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
-ctx.fillStyle = "yellow";
-
 function drawRectangle() {
+    var scaleInput = document.getElementById("sliderRange");
+    var scale = scaleInput.value;
     ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //ctx.moveTo(200 + deltaX, 100 + deltaY);
     ctx.translate(115, 115);
     ctx.rotate((Math.PI / 180) * angle);
     ctx.translate(-115, -115);
-    ctx.fillRect(120 + deltaX, 120 + deltaY, 50, 50);
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(75 + deltaX, 75 + deltaY, scale, scale);
     ctx.restore();
 }
 
