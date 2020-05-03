@@ -5,8 +5,14 @@ var deltaY = 0;
 var angle = 0;
 var canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-//var scaleInput = document.getElementById("sliderRange");
-//var scale = scaleInput.value;
+var virusimg = new Image();
+var blasterimg = new Image();
+
+function init() {
+    blasterimg.src = 'images/virusBlaster.png';
+    virusimg.src = 'images/viral.png';
+    window.requestAnimationFrame(drawVirus);
+}
 
 
 function moveUp() {
@@ -20,12 +26,12 @@ function moveDown() {
 }
 
 function moveRight() {
-    angle += 2;
+    deltaX += 2;
     drawRectangle();
 }
 
 function moveLeft() {
-    angle -= 2;
+    deltaY -= 2;
     drawRectangle();
 }
 
@@ -33,7 +39,7 @@ function moveSomething(e) {
     switch(e.keyCode) {
         case 37:
             // left key
-            angle -= 2;
+            deltaX -= 2;
             break;
         case 38:
             // up key
@@ -41,7 +47,7 @@ function moveSomething(e) {
             break;
         case 39:
             // right key
-            angle += 2;
+            deltaX += 2;
             break;
         case 40:
             // down key
@@ -59,11 +65,24 @@ function drawRectangle() {
     ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.translate(115, 115);
-    ctx.rotate((Math.PI / 180) * angle);
+    //ctx.rotate((Math.PI / 180) * angle);
     ctx.translate(-115, -115);
     ctx.fillStyle = "yellow";
-    ctx.fillRect(75 + deltaX, 75 + deltaY, scale, scale);
+    ctx.drawImage(blasterimg, 125 + deltaX, 100 + deltaY, scale, scale);
+    //ctx.fillRect(75 + deltaX, 75 + deltaY, scale, scale);
+    ctx.drawImage(virusimg, 0, 0);
     ctx.restore();
+    window.requestAnimationFrame(drawVirus);
 }
+
+function drawVirus() {
+   virusimg.onload = function() {
+       ctx.drawImage(virusimg,0, 0);
+    }
+}
+
+init();
+
+drawVirus();
 
 drawRectangle();
