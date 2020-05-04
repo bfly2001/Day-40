@@ -20,7 +20,7 @@ body {
 #ctrlContainer {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
     margin-top: 3%;
     justify-content: space-evenly;
@@ -31,20 +31,10 @@ button {
     height: 5em;
     border-radius: 20%;
     justify-self: center;
-    background-color: crimson;
+    background-color: white;
+    border: crimson solid 3px;
     font-size: xx-large;
-}
-
-#upbtn {
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 1;
-}
-
-#downbtn {
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 3;
+    text-shadow: 3px 2px 1px #9daef5;
 }
 
 #leftbtn {
@@ -57,15 +47,7 @@ button {
     grid-row-start: 2;
 }
 
-.rangeslider {
-    display: flex;
-    justify-content: center;
-    padding: 20%;
-}
-
-.myslider {
-    width: 50em;
-    background-color: grey;
-    -webkit-appearance: none;
-    color: black;
+#firebtn {
+    grid-column-start: 4;
+    grid-row-start: 2;
 }
