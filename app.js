@@ -51,21 +51,17 @@ function drawRectangle() {
     window.requestAnimationFrame(drawVirus);
 }
 
+function drawFrame(frameX, frameY, canvasX, canvasY) {
+    ctx.drawImage(virusimg, frameX, frameY, 38, 40, canvasX, canvasY, 38, 40);
+}
+
 function drawVirus() {
    virusimg.onload = function() {
         ctx.save();
-        ctx.drawImage(virusimg, 0, 0);
-        ctx.drawImage(virusimg, 25, 0);
-        ctx.drawImage(virusimg, 50, 0);
-        ctx.drawImage(virusimg, 75, 0);
-        ctx.drawImage(virusimg, 100, 0);
-        ctx.drawImage(virusimg, 125, 0);
-        ctx.drawImage(virusimg, 150, 0);
-        ctx.drawImage(virusimg, 175, 0);
-        ctx.drawImage(virusimg, 200, 0);
-        ctx.drawImage(virusimg, 225, 0);
-        ctx.drawImage(virusimg, 250, 0);
-        ctx.drawImage(virusimg, 275, 0);
+        drawFrame(0, 0, 0, 0);
+        drawFrame(1, 0, 38, 0);
+        drawFrame(0, 0, 38, 0);
+        drawFrame(2, 0, 38, 0);
         ctx.restore();
     }
     //window.requestAnimationFrame(drawVirus);
