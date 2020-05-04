@@ -1,5 +1,7 @@
+//listen for event to start
 window.addEventListener("keydown", moveSomething, false);
 
+//variables and constants
 var x = 0;
 var deltaX = 0;
 var deltaY = 0;
@@ -8,6 +10,7 @@ const ctx = canvas.getContext('2d');
 var virusimg = new Image();
 var blasterimg = new Image();
 
+//initialize
 function init() {
     blasterimg.src = 'images/virusBlaster.png';
     virusimg.src = 'images/viral.png';
@@ -15,6 +18,7 @@ function init() {
     window.requestAnimationFrame(drawVirus);
 }
 
+//move blaster right and left on button click
 function moveRight() {
     deltaX += 2;
     drawRectangle();
@@ -25,6 +29,7 @@ function moveLeft() {
     drawRectangle();
 }
 
+//move blaster right and left using arrow keys
 function moveSomething(e) {
     switch(e.keyCode) {
         case 37:
@@ -37,10 +42,11 @@ function moveSomething(e) {
             break;
     }
     e.preventDefault();
-
     drawRectangle();
+    
 }
 
+//draw function for blaster
 function drawRectangle() {
     ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -51,10 +57,12 @@ function drawRectangle() {
     window.requestAnimationFrame(drawVirus);
 }
 
+//draw frame function for virus sprite
 function drawFrame(frameX, frameY, canvasX, canvasY) {
     ctx.drawImage(virusimg, frameX, frameY, 38, 40, canvasX, canvasY, 38, 40);
 }
 
+//draw function for  virus sprite
 function drawVirus() {
    virusimg.onload = function() {
         ctx.save();
@@ -64,11 +72,12 @@ function drawVirus() {
         drawFrame(2, 0, 38, 0);
         ctx.restore();
     }
-    //window.requestAnimationFrame(drawVirus);
+    window.requestAnimationFrame(drawVirus);
 }
-
+//call initialize function
 init();
+//call drawVirus function
+drawVirus();
 
-//drawVirus();
-
-//drawRectangle();
+//call function for blaster
+drawRectangle();
