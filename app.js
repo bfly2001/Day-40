@@ -1,21 +1,23 @@
-//listen for event to start
-window.addEventListener("keydown", moveSomething, false);
+
+//canvas and context
+var canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
 
 //variables and constants
 var x = 0;
 var deltaX = 0;
 var deltaY = 0;
-var canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
-var virusimg = new Image();
+var virusX = 0;
 var blasterimg = new Image();
+var virusimg = new Image();
+blasterimg.src = 'images/virusBlaster.png';
+virusimg.src = 'images/viral.png';
 
-//initialize
-function init() {
-    blasterimg.src = 'images/virusBlaster.png';
-    virusimg.src = 'images/viral.png';
-    drawVirus();
-    window.requestAnimationFrame(drawVirus);
+function drawVirus() {
+    ctx.drawImage(virusimg, virusX, 0, 55, 54);
+    for (i = 0; i < 10; i++) {
+        ctx.drawImage(virusimg, virusX, 0, 55, 54);
+    }
 }
 
 //move blaster right and left on button click
@@ -28,6 +30,9 @@ function moveLeft() {
     deltaX -= 2;
     drawRectangle();
 }
+
+//listen for event
+window.addEventListener("keydown", moveSomething, false);
 
 //move blaster right and left using arrow keys
 function moveSomething(e) {
@@ -43,41 +48,24 @@ function moveSomething(e) {
     }
     e.preventDefault();
     drawRectangle();
-    
 }
 
 //draw function for blaster
 function drawRectangle() {
-    ctx.save();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //ctx.save();
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.translate(115, 115);
     ctx.translate(-115, -115);
     ctx.drawImage(blasterimg, 125 + deltaX, 100 + deltaY, 50, 50);
-    ctx.restore();
-    window.requestAnimationFrame(drawVirus);
+    //ctx.restore();
 }
 
-//draw frame function for virus sprite
-function drawFrame(frameX, frameY, canvasX, canvasY) {
-    ctx.drawImage(virusimg, frameX, frameY, 38, 40, canvasX, canvasY, 38, 40);
-}
-
-//draw function for  virus sprite
-function drawVirus() {
-   virusimg.onload = function() {
-        ctx.save();
-        drawFrame(0, 0, 0, 0);
-        drawFrame(1, 0, 38, 0);
-        drawFrame(0, 0, 38, 0);
-        drawFrame(2, 0, 38, 0);
-        ctx.restore();
-    }
-    window.requestAnimationFrame(drawVirus);
-}
-//call initialize function
-init();
-//call drawVirus function
-drawVirus();
-
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+//draw viruses
+    drawVirus();
 //call function for blaster
-drawRectangle();
+    drawRectangle();
+}
+
+var interval = setInterval(draw, 10);
