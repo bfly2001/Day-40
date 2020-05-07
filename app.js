@@ -14,12 +14,16 @@ blasterimg.src = 'images/virusBlaster.png';
 virusimg.src = 'images/viral.png';
 
 function drawVirus() {
-    ctx.drawImage(virusimg, virusX, 0, 55, 54);
+    //ctx.save();
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(virusimg, virusX, 0, 54, 55);
     for (i = 0; i < 10; i++) {
-        ctx.drawImage(virusimg, virusX, 0, 55, 54);
+        virusX = virusX + 60;
+        ctx.drawImage(virusimg, virusX, 0, 54, 55);
+        //ctx.restore();
     }
 }
-
+    
 //move blaster right and left on button click
 function moveRight() {
     deltaX += 2;
@@ -52,20 +56,22 @@ function moveSomething(e) {
 
 //draw function for blaster
 function drawRectangle() {
-    //ctx.save();
-    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.translate(115, 115);
     ctx.translate(-115, -115);
     ctx.drawImage(blasterimg, 125 + deltaX, 100 + deltaY, 50, 50);
-    //ctx.restore();
+    ctx.restore();
 }
 
 function draw() {
+    ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 //draw viruses
     drawVirus();
 //call function for blaster
     drawRectangle();
+    ctx.restore();
 }
 
 var interval = setInterval(draw, 10);
